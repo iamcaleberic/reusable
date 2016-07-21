@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<style type="text/css">
+	body{background-color: gray;}
+	#tab-group h3{
+		text-align: left;
+	}
+	.ready {
+		position: relative;
+		margin-bottom: 2em;
+	}
+	#tab-group.ready .tab-header{
+		text-transform: uppercase;
+		font-weight: normal;
+		padding: 4px 6px;
+	}
+	.ready .tab-header{
+		position: absolute;
+		top: 0;
+		margin: 0;
+		padding: 0.25em 0.5em; 
+	}
+	.ready .tab-header.active{
+		background: white;
+		border-bottom-color: white;
+	}
+	.ready .tab-content{
+		position: relative;
+		top: 0;
+		margin: 0;
+		padding: 0.5em;
+		top: 24px;
+		border: 1px solid #999;
+		z-index: 1;
+		background-color: white;
+
+		zoom:1;
+	}
+	.ready .tab-content:after {
+		/*content: '\0020';*/
+		display: block;
+		height: 0;
+		clear: both;
+		visibility: hidden;
+	}
+
+	.ready #tab-header-2{
+		left: 10em;
+	}
+	.ready #tab-header-3{
+		left: 18.5em;
+	}
+	.ready .tab-content{
+		display: none;
+	}
+
+	.ready .tab-content p{
+		margin: 0;
+		padding: 0 0 1em;
+	}
+
+	.ready .tab.content.active{
+		display: block;
+	}
+</style>
+<div id= "tab-group">
+	<h3 class="tab-header active" id="tab-header-1"> Hello 1</h3>
+	<br>
+	<div class="tab-content-active" id="tab-content-1" >
+		<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</p>
+	</div>
+	<br>
+	<h3 class="tab-header" id="tab-header-2">Hello 2</h3>
+	<br>
+	<div class="tab-content" id="tab-content-2" >
+		<p> Two Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</p>
+	</div>
+	<br>
+	<h3 class="tab-header" id="tab-header-3">Hello 3</h3>
+	<br>
+	<div class="tab-content" id="tab-content-3" >
+		<p>Three Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</p>
+	</div>
+</div>
+<script type="text/javascript">
+	"use strict";
+	document.addEventListener('DOMContentLoaded', 
+	function(){
+		document.getElementById('tab-group').className = 'ready';
+
+
+		var tabHeaders = document.getElementsByClassName('tab-header');
+
+			var headerClass = 'tab-header', contentClass = 'tab-content'
+			document.getElementById('tab-group').addEventListener('click', function activateTab(event){
+				console.log(event)
+
+				var myHeader = event.target;
+
+				if (myHeader.className !== headerClass) return;
+			var myID = myHeader.id,
+				contentID = myID.replace('header', 'content');
+
+			deactivateTabs();
+
+				myHeader.className = 'tab-header active';
+				document.getElementById(contentID).className = 'tab-content active';
+			function deactivateTabs(){
+				document.getElementById('tab-header-1').className = 'tab-header ';
+				document.getElementById('tab-header-2').className = 'tab-header ';
+				document.getElementById('tab-header-3').className = 'tab-header ';
+
+
+				document.getElementById('tab-content-1').className = 'tab-content ';
+				document.getElementById('tab-content-2').className = 'tab-content ';
+				document.getElementById('tab-content-3').className = 'tab-content ';
+				
+
+			}
+
+
+		});
+	});
+
+</script>
+</body>
+</html>
